@@ -30,7 +30,8 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+  /*  부드러운 스크롤 플러그인(kednin 사영시 사용금지 */
+  /* scroll-behavior: smooth; */
   font-size: 10px;
 }
 body {
@@ -184,9 +185,8 @@ input:focus, button:focus {
 
 /* 4. 영역별 디자인 */
 /* 4.1 헤더 */
-#hd-header {}
-.hd-header {
-  position: fixed;
+#hd-header {
+  position: absolute;
   left: 0;
   top: 0;
   display: flex;
@@ -197,7 +197,12 @@ input:focus, button:focus {
   z-index: 100;
 }
 
-.hd-header a {
+#hd-header.fixed {
+  position: fixed;
+  top: 0;
+}
+
+#hd-header a {
   transition: var(--speed);
 }
 .logo {
@@ -215,7 +220,7 @@ input:focus, button:focus {
   /* width: 162px; 
   height: 46px; */
   padding-top: 30%;
-  background: url('../images/logoWh.svg') left center / contain no-repeat;
+  background: url('../images/logo.svg') left center / contain no-repeat;
 }
 #hd-gnb {
   display: none;
@@ -326,24 +331,24 @@ input:focus, button:focus {
 }
 
 /* 다크모드일 때 */
-.dark-mode .hd-header {
+#hd-header.dark-mode {
   /* background-color: #000; */
   color: #fff;
 }
-.dark-mode .hd-header a, .dark-mode .hd-header button {
+#hd-header.dark-mode a, #hd-header.dark-mode button {
   color: #fff;
 }
-.dark-mode .logo a {
+#hd-header.dark-mode .logo a {
   background-image: url('../images/logoWh.svg') ;
 }
 
 /* 헤더에 배경색, 그림자 */
-.bg .hd-header {
+.bg #hd-header {
   background-color: rgba(255,255,255,0.75);
   box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.15);
 }
 
-.dark-mode.bg .hd-header {
+.dark-mode.bg #hd-header {
   background-color: rgba(0,0,0,0.75);
 }
 

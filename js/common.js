@@ -1,7 +1,15 @@
 $(document).ready(function(){
   //변수선언
   const body ="body";
-  let viewportW, viewportH;
+  const hd = "#hd-header";
+  const ft = "#hd-footer";
+  let bodyHeight = $(body).height();
+  let viewportW = window.innerWidth;
+  let viewportH = window.innerHeight;
+  let scTop = $(window).scrollTop(); //화면이 스크롤 되는 양
+  let hdHeight = $(hd).height();
+  let ftHeight = $(ft).height();
+  let ftTop = $(ft).offset().top; //top부터 떨어진 거리
   const mainMenu = ".depth1";
   const subMenu = ".depth2";
   let speed = 300;
@@ -20,7 +28,24 @@ $(document).ready(function(){
   $(window).resize(function() {
     rwd();
     smReset();
+    bodyHeight = $(body).height();
+    hdHeight = $(hd).height();
+    ftHeight = $(ft).height();
   });
+  $(window).scroll(function() {
+    scTop = $(window).scrollTop(); //스크롤 되는 양 업데이트
+    if(scTop > hdHeight) { //화면에서 헤더가 보이지 않을 정도로 문서가 스크롤되면
+      $(hd).addClass("fixed");
+    } else {
+      $(hd).removeClass("fixed");
+    }
+    // // 푸터가 화면에 다 보일 때 쯤 헤더 감추기
+    // if(scTop > bodyHeight - viewportH - 100) {
+    //   $(hd).fadeOut(speed);
+    // } else {
+    //   $(hd).fadeIn(speed);
+    // }
+  }); 
 
   // lang-btn 클릭 시 lang-list show
   // 언어선택 : 언어선택 버튼을 클릭하면 언어리스트가 슬라이드(토글)
@@ -85,5 +110,24 @@ $(document).ready(function(){
   function smReset() {
     $(smSubMenu).attr("style", "");
   }
+
+  // 부드러운 스크롤
+  // const lenis = new Lenis();
+  // function raf(time) {
+  //     lenis.raf(time)
+  //     requestAnimationFrame(raf);
+  // }
+  // requestAnimationFrame(raf);
+
+  const lenis = new Lenis({
+      lerp: 0.2,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);  
 
 });

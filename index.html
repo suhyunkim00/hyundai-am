@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/common_rwd.css">
   <link rel="stylesheet" href="./css/main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/jquery-1.12.4.min.js"></script>
+  <script src="./js/jquery-ui.min.js"></script>
+  <script src="./js/lenis.min.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/main.js"></script>
 </head>
-<body class="dark-mode bg">
+<body>
   <!-- 작업순서
   1. 기본구조 생성
   2. 헤더셋팅(title, common.css연결) 
@@ -19,7 +21,7 @@
   4. common.css수정
   5. header#hd-header,div(main)#hd-main, footer#hd-footer
   -->
-  <header id="hd-header"  class="hd-header">
+  <header id="hd-header"  class="dark-mode">
     <div class="header_container wrap">
       <h1 class="logo">
         <a href="#">
@@ -92,7 +94,7 @@
     </div><!-- header-container료종료 -->
   </header>
   <div id="hd-main" class="main">
-    <section class="main-section main-section-visual">
+    <section class="main-section main-section-visual wh">
       <h2 class="sound-only">메인 비주얼</h2>
       <div class="main-container visual-container">
         <ol class="visual-slider">
@@ -141,7 +143,7 @@
         </div>
       </div>
     </section>
-    <section class="main-section main-section-product">
+    <section class="main-section main-section-product ">
       <h2 class="sound-only">제품</h2>
       <div class="main-container product-container wrap">
         <div class="product-overview">
